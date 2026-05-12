@@ -31,18 +31,6 @@ GeoJSON: Fuente de datos cartográficos de alta fidelidad.
 - Instalación y Despliegue
 Para ejecutar este sistema en tu terminal local:
 
-Clona el repositorio:
-
-Bash
-git clone https://github.com/TU_USUARIO/FRX-Global-Tactical-Interface.git
-Estructura de archivos:
-Asegúrate de mantener la siguiente jerarquía:
-
-Plaintext
-├── index.html
-├── style.css
-├── script.js
-└── FRX big green.png  <-- Tu logo personalizado
 Ejecución:
 Debido a las políticas de seguridad de los navegadores (CORS) para cargar archivos GeoJSON externos, se recomienda abrir el proyecto mediante un servidor local:
 
