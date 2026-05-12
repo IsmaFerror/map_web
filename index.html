@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="FRX ico green.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FRX - Global Tactical Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <img src="FRX big green.png" alt="FRX Logo" class="hacker-logo">
+        <h1 class="hacker-title">> GLOBAL TACTICAL INTERFACE<span class="blinking-cursor">_</span></h1>
+    </div>
+
+    <div class="grid-bg"></div>
+    <div id="loading-msg">> ESTABLECIENDO VÍNCULO SATELITAL..._</div>
+    
+    <div id="map-container"></div>
+    
+    <div id="tooltip" class="hacker-popup">
+        <div id="tt-name" class="popup-title">IDENTIFICANDO...</div>
+        <div id="tt-capital" class="popup-subtitle">CAPITAL: ---</div>
+        <div class="popup-population">👤 <span id="tt-pop">0</span>M</div>
+        <div id="tt-fact" class="fact-box">ESPERANDO DATOS...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

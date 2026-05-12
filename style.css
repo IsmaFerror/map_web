@@ -1,0 +1,88 @@
+:root {
+    --neon-green: #0f0;
+    --dark-bg: #050505;
+    --top-bar-bg: #000;
+    --glow-color: rgba(0, 255, 0, 0.5);
+}
+
+body, html {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background-color: var(--dark-bg);
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden; color: var(--neon-green);
+}
+
+/* Efecto de líneas de escaneo CRT */
+body::after {
+    content: " "; display: block; position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 40; background-size: 100% 2px, 3px 100%; pointer-events: none;
+}
+
+/* BARRA SUPERIOR */
+.top-bar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 75px; 
+    background-color: var(--top-bar-bg); display: flex; align-items: center;
+    justify-content: space-between; padding: 0 30px; box-sizing: border-box;
+    border-bottom: 2px solid var(--neon-green); z-index: 50;
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.hacker-logo {
+    height: 48px; width: auto; margin-bottom: 6px; 
+    filter: drop-shadow(0 0 10px var(--neon-green));
+    animation: logo-flicker 6s infinite;
+}
+
+.hacker-title { font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 10px var(--neon-green); }
+
+/* ANIMACIONES */
+.blinking-cursor { animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes logo-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: drop-shadow(0 0 10px var(--neon-green)); }
+    20%, 24%, 55% { opacity: 0.6; filter: drop-shadow(0 0 2px var(--neon-green)); }
+}
+
+/* MAPA */
+#map-container { width: 100%; height: calc(100vh - 75px); margin-top: 75px; position: absolute; z-index: 1; }
+
+.country { fill: #000a00; stroke: var(--neon-green); stroke-width: 0.5px; cursor: crosshair; transition: fill 0.3s; }
+.country:hover { fill: #003300; filter: drop-shadow(0 0 5px var(--neon-green)); }
+.country.active { fill: #004400; stroke-width: 1px; }
+
+/* POPUP */
+.hacker-popup {
+    position: absolute; background-color: rgba(0, 15, 0, 0.95);
+    border: 1px solid var(--neon-green); padding: 15px; color: var(--neon-green);
+    pointer-events: none; opacity: 0; z-index: 100; transform: translate(-50%, -100%);
+    max-width: 280px; box-shadow: 0 0 20px var(--glow-color), inset 0 0 10px var(--glow-color);
+}
+
+.popup-title { font-weight: bold; border-bottom: 1px solid var(--neon-green); margin-bottom: 3px; letter-spacing: 2px; }
+.popup-subtitle { font-size: 10px; color: #008800; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
+.popup-population { font-size: 22px; text-shadow: 0 0 10px var(--neon-green); }
+.fact-box { font-size: 11px; color: #00ff00; margin-top: 10px; border-top: 1px dashed #006600; padding-top: 8px; line-height: 1.4; }
+
+/* GRID */
+.grid-bg {
+    position: absolute; width: 100%; height: 100%;
+    background-image: linear-gradient(transparent 95%, rgba(0, 255, 0, 0.05) 95%), 
+                      linear-gradient(90deg, transparent 95%, rgba(0, 255, 0, 0.05) 95%);
+    background-size: 40px 40px; z-index: 0;
+}
+
+.connection-line { stroke: var(--neon-green); stroke-width: 1.5px; stroke-dasharray: 4; filter: drop-shadow(0 0 5px var(--neon-green)); }
+
+#loading-msg { position: absolute; top: 55%; width: 100%; text-align: center; z-index: 10; font-size: 14px; text-shadow: 0 0 5px var(--neon-green); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .top-bar { height: 55px; padding: 0 15px; }
+    .hacker-logo { height: 30px; }
+    .hacker-title { font-size: 11px; letter-spacing: 1px; }
+    #map-container { height: calc(100vh - 55px); margin-top: 55px; }
+    .hacker-popup { max-width: 200px; padding: 10px; }
+}
